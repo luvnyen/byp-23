@@ -78,51 +78,53 @@
             });
         });
 
-        function getCoursesByUnit() {
-            $.ajax({
-                url: 'http://localhost:8000/api/courses/units/:unitId'.replace(
-                    ':unitId',
-                    '{{ $data['student']['unit']['id'] }}'
-                ),
-                type: 'GET',
-                dataType: 'json',
-                success: function(res) {
-                    res = res.data;
-                    res.forEach(function(item) {
-                        let option = document.createElement('option');
-                        option.value = item.id;
-                        option.text = item.name;
-                        document.querySelector('#form-class').appendChild(option);
-                    });
-                },
-                error: function(err) {
-                    console.log(err);
-                }
-            });
-        }
-
-        function addCourse() {
-            $.ajax({
-                url: '{{ route('student-course', $data['student']['id']) }}',
-                type: 'POST',
-                dataType: 'json',
-                data: {
-                    _token: '{{ csrf_token() }}',
-                    student_id: '{{ $data['student']['id'] }}',
-                    course_id: document.querySelector('#form-class').value
-                },
-                success: function(res) {
-                    if (res.success !== true) {
-                        $('.alert').removeAttr('hidden');
-                        $('.btnConfirm').attr('disabled', false);
-                        return;
+        @if (!empty($data))
+            function getCoursesByUnit() {
+                $.ajax({
+                    url: 'http://localhost:8000/api/courses/units/:unitId'.replace(
+                        ':unitId',
+                        '{{ $data['student']['unit']['id'] }}'
+                    ),
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function(res) {
+                        res = res.data;
+                        res.forEach(function(item) {
+                            let option = document.createElement('option');
+                            option.value = item.id;
+                            option.text = item.name;
+                            document.querySelector('#form-class').appendChild(option);
+                        });
+                    },
+                    error: function(err) {
+                        console.log(err);
                     }
-                    location.reload();
-                },
-                error: function(err) {
-                    console.log(err);
-                }
-            });
-        }
+                });
+            }
+
+            function addCourse() {
+                $.ajax({
+                    url: '{{ route('student-course', $data['student']['id']) }}',
+                    type: 'POST',
+                    dataType: 'json',
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        student_id: '{{ $data['student']['id'] }}',
+                        course_id: document.querySelector('#form-class').value
+                    },
+                    success: function(res) {
+                        if (res.success !== true) {
+                            $('.alert').removeAttr('hidden');
+                            $('.btnConfirm').attr('disabled', false);
+                            return;
+                        }
+                        location.reload();
+                    },
+                    error: function(err) {
+                        console.log(err);
+                    }
+                });
+            }
+        @endif
     </script>
 @endsection

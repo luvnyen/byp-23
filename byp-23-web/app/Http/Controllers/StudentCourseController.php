@@ -15,7 +15,6 @@ class StudentCourseController extends Controller
         );
         $data = Http::get($url);
         
-        // return $data['data'];
         return view(
             'pages.student_course', 
             [
