@@ -1,0 +1,889 @@
+{
+    "info": {
+        "name": "BYP2023",
+        "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
+    },
+    "item": [
+        {
+            "name": "Students",
+            "item": [
+                {
+                    "name": "Units",
+                    "item": []
+                },
+                {
+                    "name": "Students",
+                    "item": []
+                },
+                {
+                    "name": "Courses",
+                    "item": []
+                },
+                {
+                    "name": "Student Course Details",
+                    "item": []
+                }
+            ]
+        },
+        {
+            "name": "Get All Units",
+            "request": {
+                "auth": {
+                    "type": "bearer",
+                    "bearer": {
+                        "key": "token",
+                        "value": "{{SANCTUM_TOKEN}}",
+                        "type": "string"
+                    }
+                },
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Accept",
+                        "value": "application\/json"
+                    },
+                    {
+                        "key": "Content-Type",
+                        "value": "application\/json"
+                    }
+                ],
+                "url": {
+                    "raw": "{{APP_URL}}\/api\/units",
+                    "host": [
+                        "{{APP_URL}}"
+                    ],
+                    "path": [
+                        "api",
+                        "units"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Create Unit",
+            "request": {
+                "auth": {
+                    "type": "bearer",
+                    "bearer": {
+                        "key": "token",
+                        "value": "{{SANCTUM_TOKEN}}",
+                        "type": "string"
+                    }
+                },
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Accept",
+                        "value": "application\/json"
+                    },
+                    {
+                        "key": "Content-Type",
+                        "value": "application\/json"
+                    }
+                ],
+                "url": {
+                    "raw": "{{APP_URL}}\/api\/units",
+                    "host": [
+                        "{{APP_URL}}"
+                    ],
+                    "path": [
+                        "api",
+                        "units"
+                    ]
+                },
+                "body": {
+                    "mode": "formdata",
+                    "formdata": [
+                        {
+                            "key": "name",
+                            "value": "",
+                            "type": "text",
+                            "description": "required|string|max:100"
+                        }
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Get Unit by ID",
+            "request": {
+                "auth": {
+                    "type": "bearer",
+                    "bearer": {
+                        "key": "token",
+                        "value": "{{SANCTUM_TOKEN}}",
+                        "type": "string"
+                    }
+                },
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Accept",
+                        "value": "application\/json"
+                    },
+                    {
+                        "key": "Content-Type",
+                        "value": "application\/json"
+                    }
+                ],
+                "url": {
+                    "raw": "{{APP_URL}}\/api\/units\/:id",
+                    "host": [
+                        "{{APP_URL}}"
+                    ],
+                    "path": [
+                        "api",
+                        "units",
+                        ":id"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Update Unit",
+            "request": {
+                "auth": {
+                    "type": "bearer",
+                    "bearer": {
+                        "key": "token",
+                        "value": "{{SANCTUM_TOKEN}}",
+                        "type": "string"
+                    }
+                },
+                "method": "PUT",
+                "header": [
+                    {
+                        "key": "Accept",
+                        "value": "application\/json"
+                    },
+                    {
+                        "key": "Content-Type",
+                        "value": "application\/json"
+                    }
+                ],
+                "url": {
+                    "raw": "{{APP_URL}}\/api\/units\/:id",
+                    "host": [
+                        "{{APP_URL}}"
+                    ],
+                    "path": [
+                        "api",
+                        "units",
+                        ":id"
+                    ]
+                },
+                "body": {
+                    "mode": "urlencoded",
+                    "urlencoded": [
+                        {
+                            "key": "name",
+                            "value": "",
+                            "type": "text",
+                            "description": "required|string|max:100"
+                        }
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Delete Unit",
+            "request": {
+                "auth": {
+                    "type": "bearer",
+                    "bearer": {
+                        "key": "token",
+                        "value": "{{SANCTUM_TOKEN}}",
+                        "type": "string"
+                    }
+                },
+                "method": "DELETE",
+                "header": [
+                    {
+                        "key": "Accept",
+                        "value": "application\/json"
+                    },
+                    {
+                        "key": "Content-Type",
+                        "value": "application\/json"
+                    }
+                ],
+                "url": {
+                    "raw": "{{APP_URL}}\/api\/units\/:id",
+                    "host": [
+                        "{{APP_URL}}"
+                    ],
+                    "path": [
+                        "api",
+                        "units",
+                        ":id"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Get All Students",
+            "request": {
+                "auth": {
+                    "type": "bearer",
+                    "bearer": {
+                        "key": "token",
+                        "value": "{{SANCTUM_TOKEN}}",
+                        "type": "string"
+                    }
+                },
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Accept",
+                        "value": "application\/json"
+                    },
+                    {
+                        "key": "Content-Type",
+                        "value": "application\/json"
+                    }
+                ],
+                "url": {
+                    "raw": "{{APP_URL}}\/api\/students",
+                    "host": [
+                        "{{APP_URL}}"
+                    ],
+                    "path": [
+                        "api",
+                        "students"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Create Student",
+            "request": {
+                "auth": {
+                    "type": "bearer",
+                    "bearer": {
+                        "key": "token",
+                        "value": "{{SANCTUM_TOKEN}}",
+                        "type": "string"
+                    }
+                },
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Accept",
+                        "value": "application\/json"
+                    },
+                    {
+                        "key": "Content-Type",
+                        "value": "application\/json"
+                    }
+                ],
+                "url": {
+                    "raw": "{{APP_URL}}\/api\/students",
+                    "host": [
+                        "{{APP_URL}}"
+                    ],
+                    "path": [
+                        "api",
+                        "students"
+                    ]
+                },
+                "body": {
+                    "mode": "formdata",
+                    "formdata": [
+                        {
+                            "key": "nrp",
+                            "value": "",
+                            "type": "text",
+                            "description": "required|string|min:9|max:9"
+                        },
+                        {
+                            "key": "name",
+                            "value": "",
+                            "type": "text",
+                            "description": "required|string|max:100"
+                        },
+                        {
+                            "key": "unit_id",
+                            "value": "",
+                            "type": "text",
+                            "description": ""
+                        }
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Get Student by ID",
+            "request": {
+                "auth": {
+                    "type": "bearer",
+                    "bearer": {
+                        "key": "token",
+                        "value": "{{SANCTUM_TOKEN}}",
+                        "type": "string"
+                    }
+                },
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Accept",
+                        "value": "application\/json"
+                    },
+                    {
+                        "key": "Content-Type",
+                        "value": "application\/json"
+                    }
+                ],
+                "url": {
+                    "raw": "{{APP_URL}}\/api\/students\/:id",
+                    "host": [
+                        "{{APP_URL}}"
+                    ],
+                    "path": [
+                        "api",
+                        "students",
+                        ":id"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Update Student",
+            "request": {
+                "auth": {
+                    "type": "bearer",
+                    "bearer": {
+                        "key": "token",
+                        "value": "{{SANCTUM_TOKEN}}",
+                        "type": "string"
+                    }
+                },
+                "method": "PUT",
+                "header": [
+                    {
+                        "key": "Accept",
+                        "value": "application\/json"
+                    },
+                    {
+                        "key": "Content-Type",
+                        "value": "application\/json"
+                    }
+                ],
+                "url": {
+                    "raw": "{{APP_URL}}\/api\/students\/:id",
+                    "host": [
+                        "{{APP_URL}}"
+                    ],
+                    "path": [
+                        "api",
+                        "students",
+                        ":id"
+                    ]
+                },
+                "body": {
+                    "mode": "urlencoded",
+                    "urlencoded": [
+                        {
+                            "key": "nrp",
+                            "value": "",
+                            "type": "text",
+                            "description": "required|string|min:9|max:9"
+                        },
+                        {
+                            "key": "name",
+                            "value": "",
+                            "type": "text",
+                            "description": "required|string|max:100"
+                        },
+                        {
+                            "key": "unit_id",
+                            "value": "",
+                            "type": "text",
+                            "description": ""
+                        }
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Delete Student",
+            "request": {
+                "auth": {
+                    "type": "bearer",
+                    "bearer": {
+                        "key": "token",
+                        "value": "{{SANCTUM_TOKEN}}",
+                        "type": "string"
+                    }
+                },
+                "method": "DELETE",
+                "header": [
+                    {
+                        "key": "Accept",
+                        "value": "application\/json"
+                    },
+                    {
+                        "key": "Content-Type",
+                        "value": "application\/json"
+                    }
+                ],
+                "url": {
+                    "raw": "{{APP_URL}}\/api\/students\/:id",
+                    "host": [
+                        "{{APP_URL}}"
+                    ],
+                    "path": [
+                        "api",
+                        "students",
+                        ":id"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Get All Courses",
+            "request": {
+                "auth": {
+                    "type": "bearer",
+                    "bearer": {
+                        "key": "token",
+                        "value": "{{SANCTUM_TOKEN}}",
+                        "type": "string"
+                    }
+                },
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Accept",
+                        "value": "application\/json"
+                    },
+                    {
+                        "key": "Content-Type",
+                        "value": "application\/json"
+                    }
+                ],
+                "url": {
+                    "raw": "{{APP_URL}}\/api\/courses",
+                    "host": [
+                        "{{APP_URL}}"
+                    ],
+                    "path": [
+                        "api",
+                        "courses"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Create Course",
+            "request": {
+                "auth": {
+                    "type": "bearer",
+                    "bearer": {
+                        "key": "token",
+                        "value": "{{SANCTUM_TOKEN}}",
+                        "type": "string"
+                    }
+                },
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Accept",
+                        "value": "application\/json"
+                    },
+                    {
+                        "key": "Content-Type",
+                        "value": "application\/json"
+                    }
+                ],
+                "url": {
+                    "raw": "{{APP_URL}}\/api\/courses",
+                    "host": [
+                        "{{APP_URL}}"
+                    ],
+                    "path": [
+                        "api",
+                        "courses"
+                    ]
+                },
+                "body": {
+                    "mode": "formdata",
+                    "formdata": [
+                        {
+                            "key": "code",
+                            "value": "",
+                            "type": "text",
+                            "description": "required|string|max:10"
+                        },
+                        {
+                            "key": "name",
+                            "value": "",
+                            "type": "text",
+                            "description": "required|string|max:100"
+                        },
+                        {
+                            "key": "unit_id",
+                            "value": "",
+                            "type": "text",
+                            "description": "required|uuid"
+                        }
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Get Course by ID",
+            "request": {
+                "auth": {
+                    "type": "bearer",
+                    "bearer": {
+                        "key": "token",
+                        "value": "{{SANCTUM_TOKEN}}",
+                        "type": "string"
+                    }
+                },
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Accept",
+                        "value": "application\/json"
+                    },
+                    {
+                        "key": "Content-Type",
+                        "value": "application\/json"
+                    }
+                ],
+                "url": {
+                    "raw": "{{APP_URL}}\/api\/courses\/:id",
+                    "host": [
+                        "{{APP_URL}}"
+                    ],
+                    "path": [
+                        "api",
+                        "courses",
+                        ":id"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Update Course",
+            "request": {
+                "auth": {
+                    "type": "bearer",
+                    "bearer": {
+                        "key": "token",
+                        "value": "{{SANCTUM_TOKEN}}",
+                        "type": "string"
+                    }
+                },
+                "method": "PUT",
+                "header": [
+                    {
+                        "key": "Accept",
+                        "value": "application\/json"
+                    },
+                    {
+                        "key": "Content-Type",
+                        "value": "application\/json"
+                    }
+                ],
+                "url": {
+                    "raw": "{{APP_URL}}\/api\/courses\/:id",
+                    "host": [
+                        "{{APP_URL}}"
+                    ],
+                    "path": [
+                        "api",
+                        "courses",
+                        ":id"
+                    ]
+                },
+                "body": {
+                    "mode": "urlencoded",
+                    "urlencoded": [
+                        {
+                            "key": "code",
+                            "value": "",
+                            "type": "text",
+                            "description": "required|string|max:10"
+                        },
+                        {
+                            "key": "name",
+                            "value": "",
+                            "type": "text",
+                            "description": "required|string|max:100"
+                        },
+                        {
+                            "key": "unit_id",
+                            "value": "",
+                            "type": "text",
+                            "description": "required|uuid"
+                        }
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Delete Course",
+            "request": {
+                "auth": {
+                    "type": "bearer",
+                    "bearer": {
+                        "key": "token",
+                        "value": "{{SANCTUM_TOKEN}}",
+                        "type": "string"
+                    }
+                },
+                "method": "DELETE",
+                "header": [
+                    {
+                        "key": "Accept",
+                        "value": "application\/json"
+                    },
+                    {
+                        "key": "Content-Type",
+                        "value": "application\/json"
+                    }
+                ],
+                "url": {
+                    "raw": "{{APP_URL}}\/api\/courses\/:id",
+                    "host": [
+                        "{{APP_URL}}"
+                    ],
+                    "path": [
+                        "api",
+                        "courses",
+                        ":id"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Get All Student Course Details",
+            "request": {
+                "auth": {
+                    "type": "bearer",
+                    "bearer": {
+                        "key": "token",
+                        "value": "{{SANCTUM_TOKEN}}",
+                        "type": "string"
+                    }
+                },
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Accept",
+                        "value": "application\/json"
+                    },
+                    {
+                        "key": "Content-Type",
+                        "value": "application\/json"
+                    }
+                ],
+                "url": {
+                    "raw": "{{APP_URL}}\/api\/student-course-details",
+                    "host": [
+                        "{{APP_URL}}"
+                    ],
+                    "path": [
+                        "api",
+                        "student-course-details"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Create Student Course Details",
+            "request": {
+                "auth": {
+                    "type": "bearer",
+                    "bearer": {
+                        "key": "token",
+                        "value": "{{SANCTUM_TOKEN}}",
+                        "type": "string"
+                    }
+                },
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Accept",
+                        "value": "application\/json"
+                    },
+                    {
+                        "key": "Content-Type",
+                        "value": "application\/json"
+                    }
+                ],
+                "url": {
+                    "raw": "{{APP_URL}}\/api\/student-course-details",
+                    "host": [
+                        "{{APP_URL}}"
+                    ],
+                    "path": [
+                        "api",
+                        "student-course-details"
+                    ]
+                },
+                "body": {
+                    "mode": "formdata",
+                    "formdata": [
+                        {
+                            "key": "student_id",
+                            "value": "",
+                            "type": "text",
+                            "description": "required|uuid"
+                        },
+                        {
+                            "key": "course_id",
+                            "value": "",
+                            "type": "text",
+                            "description": "required|uuid"
+                        }
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Get Student Course Details by ID",
+            "request": {
+                "auth": {
+                    "type": "bearer",
+                    "bearer": {
+                        "key": "token",
+                        "value": "{{SANCTUM_TOKEN}}",
+                        "type": "string"
+                    }
+                },
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Accept",
+                        "value": "application\/json"
+                    },
+                    {
+                        "key": "Content-Type",
+                        "value": "application\/json"
+                    }
+                ],
+                "url": {
+                    "raw": "{{APP_URL}}\/api\/student-course-details\/:id",
+                    "host": [
+                        "{{APP_URL}}"
+                    ],
+                    "path": [
+                        "api",
+                        "student-course-details",
+                        ":id"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Update Student Course Details",
+            "request": {
+                "auth": {
+                    "type": "bearer",
+                    "bearer": {
+                        "key": "token",
+                        "value": "{{SANCTUM_TOKEN}}",
+                        "type": "string"
+                    }
+                },
+                "method": "PUT",
+                "header": [
+                    {
+                        "key": "Accept",
+                        "value": "application\/json"
+                    },
+                    {
+                        "key": "Content-Type",
+                        "value": "application\/json"
+                    }
+                ],
+                "url": {
+                    "raw": "{{APP_URL}}\/api\/student-course-details\/:id",
+                    "host": [
+                        "{{APP_URL}}"
+                    ],
+                    "path": [
+                        "api",
+                        "student-course-details",
+                        ":id"
+                    ]
+                },
+                "body": {
+                    "mode": "urlencoded",
+                    "urlencoded": [
+                        {
+                            "key": "student_id",
+                            "value": "",
+                            "type": "text",
+                            "description": "required|uuid"
+                        },
+                        {
+                            "key": "course_id",
+                            "value": "",
+                            "type": "text",
+                            "description": "required|uuid"
+                        }
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Delete Student Course Details",
+            "request": {
+                "auth": {
+                    "type": "bearer",
+                    "bearer": {
+                        "key": "token",
+                        "value": "{{SANCTUM_TOKEN}}",
+                        "type": "string"
+                    }
+                },
+                "method": "DELETE",
+                "header": [
+                    {
+                        "key": "Accept",
+                        "value": "application\/json"
+                    },
+                    {
+                        "key": "Content-Type",
+                        "value": "application\/json"
+                    }
+                ],
+                "url": {
+                    "raw": "{{APP_URL}}\/api\/student-course-details\/:id",
+                    "host": [
+                        "{{APP_URL}}"
+                    ],
+                    "path": [
+                        "api",
+                        "student-course-details",
+                        ":id"
+                    ]
+                }
+            },
+            "response": []
+        }
+    ]
+}

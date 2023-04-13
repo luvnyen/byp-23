@@ -1,0 +1,29 @@
+body {
+    background-color: #fff;
+    font-family: 'Roboto', sans-serif;
+    color: #273656;
+    margin: 0;
+    padding: 0;
+}
+
+.header, .footer {
+    background-color: #273656;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+}
+
+.header__caption, .footer__caption {
+    color: #fff;
+    font-size: 24px;
+    text-align: center;
+}
+
+.content {
+    padding: 20px;
+}

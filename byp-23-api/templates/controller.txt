@@ -1,0 +1,20 @@
+<?php
+
+namespace App\Http\Controllers\{{ classParentDirectory }};
+
+use App\Http\Controllers\BaseController;
+use App\Models\{{ classParentDirectory }}\{{ className }};
+
+class {{ className }}Controller extends BaseController
+{
+    public function __construct({{ className }} $model)
+    {
+        parent::__construct($model);
+    }
+
+    /*
+        Add new controllers
+        OR
+        Override existing controller here...
+    */
+}

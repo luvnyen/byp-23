@@ -1,0 +1,20 @@
+<?php
+
+namespace App\Services\{{ classParentDirectory }};
+
+use App\Models\{{ classParentDirectory }}\{{ className }};
+use App\Services\BaseService;
+
+class {{ className }}Service extends BaseService
+{
+    public function __construct({{ className }} $model)
+    {
+        parent::__construct($model);
+    }
+
+    /*
+        Add new services
+        OR
+        Override existing service here...
+    */
+}

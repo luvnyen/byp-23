@@ -1,0 +1,20 @@
+<?php
+
+namespace Database\Seeders\{{ classParentDirectory }};
+
+use App\Models\{{ classParentDirectory }}\{{ className }};
+use Illuminate\Database\Seeder;
+
+class {{ className }}Seeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     */
+    public function run(): void
+    {
+        ${{ classNameCamelCasePlural }} = [];
+        foreach (${{ classNameCamelCasePlural }} as ${{ classNameCamelCase }}) {
+            {{ className }}::factory()->create(${{ classNameCamelCase }});
+        }
+    }
+}

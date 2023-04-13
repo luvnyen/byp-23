@@ -1,0 +1,65 @@
+<?php
+
+namespace App\Models\{{ classParentDirectory }};
+
+use App\Http\Resources\{{ classParentDirectory }}\{{ className }}Resource;
+use App\Repositories\{{ classParentDirectory }}\{{ className }}Repository;
+use App\Services\{{ classParentDirectory }}\{{ className }}Service;
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
+
+class {{ className }} extends Model
+{
+    use HasUuids;
+    use HasFactory;
+
+    protected $fillable = [];
+
+    public static function validationRules()
+    {
+        return [];
+    }
+
+    public static function validationMessages()
+    {
+        return [];
+    }
+
+    public function test()
+    {
+        return [];
+    }
+
+    public function resourceData($request)
+    {
+        return [
+            'id' => $request->id,
+        ];
+    }
+
+    public function controller()
+    {
+        return 'App\Http\Controllers\{{ classParentDirectory }}\{{ className }}Controller';
+    }
+
+    public function service()
+    {
+        return new {{ className }}Service($this);
+    }
+
+    public function repository()
+    {
+        return new {{ className }}Repository($this);
+    }
+
+    public function resource()
+    {
+        return new {{ className }}Resource($this);
+    }
+
+    /*
+        Define Relationships
+    */
+}
