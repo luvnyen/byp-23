@@ -1,0 +1,13 @@
+.card {
+    background: #273656;
+}
+
+.card__name {
+    color: #fff;
+    font-weight: bold;
+}
+
+.card__code {
+    color: #fff;
+    margin-bottom: 0 !important;
+}

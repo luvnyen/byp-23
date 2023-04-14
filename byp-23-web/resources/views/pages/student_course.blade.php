@@ -12,12 +12,12 @@
         <p class='mt-3'>
             Daftar mata kuliah yang diambil oleh <b>{{ $data['student']['name'] }}, NRP: {{ $data['student']['nrp'] }}</b>
         </p>
-        <button type="button" class="btn btn-primary mb-3">Tambah Kelas</button>
+        <button type="button" class="btn btn-primary mb-3">Tambah Mata Kuliah</button>
         <div class="modal" tabindex="-1" role="dialog">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">Tambah Mata Kuliah Baru</h5>
+                        <h5 class="modal-title">Mata Kuliah Baru</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -48,12 +48,7 @@
         </div>
         <div class="row ml-0">
             @foreach ($data['courses'] as $item)
-            <div class="card col-md-4 mr-3" style="width: 18rem;">
-                <div class="card-body">
-                    <h5 class="card-title">{{ $item['name'] }}</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">{{ $item['code'] }}</h6>
-                </div>
-            </div>
+                <x-course :name="$item['name']" :code="$item['code']" />
         @endforeach
         </div>
     @endif
