@@ -2,16 +2,17 @@
 
 namespace App\Models\Student;
 
+use App\Http\Resources\Student\CourseResource;
+use App\Http\Resources\Student\StudentCourseDetailsResource;
+use App\Http\Resources\Student\StudentResource;
+use App\Models\ModelUtils;
 use App\Models\Student\Course;
 use App\Models\Student\Student;
-use Illuminate\Database\Eloquent\Model;
-use App\Http\Resources\Student\CourseResource;
-use App\Http\Resources\Student\StudentResource;
-use Illuminate\Database\Eloquent\Concerns\HasUuids;
-use App\Services\Student\StudentCourseDetailsService;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use App\Http\Resources\Student\StudentCourseDetailsResource;
 use App\Repositories\Student\StudentCourseDetailsRepository;
+use App\Services\Student\StudentCourseDetailsService;
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
 class StudentCourseDetails extends Model
 {
@@ -93,6 +94,14 @@ class StudentCourseDetails extends Model
     /*
         Define Relationships
     */
+
+    public function relations()
+    {
+        return ModelUtils::filterNullValues([
+            'student',
+            'course'
+        ]);
+    }
 
     public function student()
     {

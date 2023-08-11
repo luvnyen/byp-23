@@ -28,6 +28,7 @@ clear:
 	@composer dump-autoload
 	@$(ARTISAN) clear-compiled
 	@$(ARTISAN) optimize
+	@$(ARTISAN) config:clear
 
 class:
 	@$(ARTISAN) make:custom-class $(class)

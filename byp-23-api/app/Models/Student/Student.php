@@ -2,15 +2,16 @@
 
 namespace App\Models\Student;
 
-use Illuminate\Support\Str;
-use App\Models\Student\Unit;
-use Illuminate\Database\Eloquent\Model;
-use App\Services\Student\StudentService;
-use App\Http\Resources\Student\UnitResource;
 use App\Http\Resources\Student\StudentResource;
+use App\Http\Resources\Student\UnitResource;
+use App\Models\ModelUtils;
+use App\Models\Student\Unit;
 use App\Repositories\Student\StudentRepository;
+use App\Services\Student\StudentService;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class Student extends Model
 {
@@ -71,12 +72,12 @@ class Student extends Model
 
     public function resourceData($request)
     {
-        return [
+        return ModelUtils::filterNullValues([
             'id' => $request->id,
             'nrp' => $request->nrp,
             'name' => $request->name,
             'unit' => new UnitResource($request->unit),
-        ];
+        ]);
     }
 
     public function controller()
@@ -102,6 +103,13 @@ class Student extends Model
     /*
         Define Relationships
     */
+
+    public function relations()
+    {
+        return [
+            'unit'
+        ];
+    }
 
     public function unit()
     {

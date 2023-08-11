@@ -11,7 +11,7 @@ class BaseController extends Controller
 {
     use HttpResponse;
 
-    protected $model;
+    public $model;
 
     protected $service;
 
@@ -28,8 +28,6 @@ class BaseController extends Controller
     {
         $filterParams = $request->query();
 
-        ControllerUtils::validateFilterParams($this->model, $filterParams);
-
         $res = $this->service->getAll($filterParams);
 
         return $this->success($res);
@@ -40,11 +38,11 @@ class BaseController extends Controller
      */
     public function store(Request $request)
     {
-        ControllerUtils::validateRequest($this->model, $request);
+        $requestFillable = $request->only($this->model->getFillable());
 
-        $res = $this->service->create(
-            $request->only($this->model->getFillable()),
-        );
+        ControllerUtils::validateRequest($this->model, $requestFillable);
+
+        $res = $this->service->create($requestFillable);
 
         return $this->success(
             $res,
@@ -67,11 +65,41 @@ class BaseController extends Controller
      */
     public function update(Request $request, $id)
     {
-        ControllerUtils::validateRequest($this->model, $request);
+        $requestFillable = $request->only($this->model->getFillable());
+
+        ControllerUtils::validateRequest($this->model, $requestFillable);
 
         $res = $this->service->update(
             $id,
-            $request->only($this->model->getFillable()),
+            $requestFillable,
+        );
+
+        return $this->success($res);
+    }
+
+    /**
+     * Update the specified resource in storage partially.
+     */
+    public function updatePartial(Request $request, $id)
+    {
+        $fillableKey = [];
+        foreach ($this->model->getFillable() as $field) {
+            if ($request->has($field)) {
+                $fillableKey[] = $field;
+            }
+        }
+
+        $requestFillable = $request->only($fillableKey);
+
+        ControllerUtils::validateRequest(
+            $this->model,
+            $requestFillable,
+            isPatch: true,
+        );
+
+        $res = $this->service->updatePartial(
+            $id,
+            $requestFillable,
         );
 
         return $this->success($res);

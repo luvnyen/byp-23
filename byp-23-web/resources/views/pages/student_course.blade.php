@@ -49,7 +49,7 @@
         <div class="row ml-0">
             @foreach ($data['courses'] as $item)
                 <x-course :name="$item['name']" :code="$item['code']" />
-        @endforeach
+            @endforeach
         </div>
     @endif
 @endsection

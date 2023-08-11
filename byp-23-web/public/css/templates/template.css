@@ -6,7 +6,8 @@ body {
     padding: 0;
 }
 
-.header, .footer {
+.header,
+.footer {
     background-color: #273656;
     width: 100%;
     display: flex;
@@ -18,7 +19,8 @@ body {
     bottom: 0;
 }
 
-.header__caption, .footer__caption {
+.header__caption,
+.footer__caption {
     color: #fff;
     font-size: 24px;
     text-align: center;

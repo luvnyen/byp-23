@@ -4,6 +4,7 @@ namespace App\Models\Student;
 
 use App\Http\Resources\Student\CourseResource;
 use App\Http\Resources\Student\UnitResource;
+use App\Models\ModelUtils;
 use App\Repositories\Student\CourseRepository;
 use App\Services\Student\CourseService;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
@@ -70,12 +71,12 @@ class Course extends Model
 
     public function resourceData($request)
     {
-        return [
+        return ModelUtils::filterNullValues([
             'id' => $request->id,
             'code' => $request->code,
             'name' => $request->name,
             'unit' => new UnitResource($request->unit),
-        ];
+        ]);
     }
 
     public function controller()
@@ -101,6 +102,13 @@ class Course extends Model
     /*
         Define Relationships
     */
+
+    public function relations()
+    {
+        return [
+            'unit'
+        ];
+    }
 
     public function unit()
     {

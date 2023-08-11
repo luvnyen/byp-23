@@ -24,6 +24,8 @@ return new class extends Migration
                 ->on('courses')
                 ->onDelete('cascade');
             $table->timestamps();
+
+            $table->unique(['student_id', 'course_id']);
         });
     }
 

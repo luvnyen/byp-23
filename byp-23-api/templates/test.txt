@@ -25,7 +25,8 @@ class {{ className }}Test extends TestCase
     {
         parent::setUp();
         $this->login($this->user);
-
+        
+        // Debug the error message
         // $this->withoutExceptionHandling();
 
         $this->model = new {{ className }}();

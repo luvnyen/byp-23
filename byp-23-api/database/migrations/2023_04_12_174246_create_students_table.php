@@ -21,6 +21,8 @@ return new class extends Migration
                 ->on('units')
                 ->onDelete('cascade');
             $table->timestamps();
+
+            $table->index(['nrp']);
         });
     }
 

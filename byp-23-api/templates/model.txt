@@ -5,6 +5,7 @@ namespace App\Models\{{ classParentDirectory }};
 use App\Http\Resources\{{ classParentDirectory }}\{{ className }}Resource;
 use App\Repositories\{{ classParentDirectory }}\{{ className }}Repository;
 use App\Services\{{ classParentDirectory }}\{{ className }}Service;
+use App\Models\ModelUtils;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -34,9 +35,9 @@ class {{ className }} extends Model
 
     public function resourceData($request)
     {
-        return [
+        return ModelUtils::filterNullValues([
             'id' => $request->id,
-        ];
+        ]);
     }
 
     public function controller()
@@ -62,4 +63,9 @@ class {{ className }} extends Model
     /*
         Define Relationships
     */
+
+    public function relations()
+    {
+        return [];
+    }
 }

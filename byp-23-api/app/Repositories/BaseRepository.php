@@ -20,7 +20,9 @@ class BaseRepository
 
     public function getAll($filterParams = [])
     {
-        if (! empty($filterParams)) {
+        $this->model = $this->model->with($this->model->relations());
+
+        if (!empty($filterParams)) {
             $this->model = $this->model->where($filterParams);
         }
 
@@ -29,15 +31,63 @@ class BaseRepository
 
     public function getAllWithPagination($count, $filterParams = [])
     {
-        if (! empty($filterParams)) {
+        $this->model = $this->model->with($this->model->relations());
+
+        if (!empty($filterParams)) {
             $this->model = $this->model->where($filterParams);
         }
 
-        return $this->model->paginate($count)->items();
+        return $this->model
+            ->paginate($count)
+            ->items();
+    }
+
+    public function getAllWithIlikeRuleParam($filterParams, $ilikeParams)
+    {
+        $this->model = $this->model->with($this->model->relations());
+
+        if (!empty($ilikeParams)) {
+            foreach ($ilikeParams as $ilikeParam) {
+                if (array_key_exists($ilikeParam, $filterParams)) {
+                    $this->model = $this->model->where($ilikeParam, 'ilike', '%' . $filterParams[$ilikeParam] . '%');
+                    unset($filterParams[$ilikeParam]);
+                }
+            }
+        }
+
+        if (!empty($filterParams)) {
+            $this->model = $this->model->where($filterParams);
+        }
+
+        return $this->model->get();
+    }
+
+    public function getAllWithIlikeRuleParamWithPagination($count, $filterParams, $ilikeParams)
+    {
+        $this->model = $this->model->with($this->model->relations());
+
+        if (!empty($ilikeParams)) {
+            foreach ($ilikeParams as $ilikeParam) {
+                if (array_key_exists($ilikeParam, $filterParams)) {
+                    $this->model = $this->model->where($ilikeParam, 'ilike', '%' . $filterParams[$ilikeParam] . '%');
+                    unset($filterParams[$ilikeParam]);
+                }
+            }
+        }
+
+        if (!empty($filterParams)) {
+            $this->model = $this->model->where($filterParams);
+        }
+
+        return $this->model
+            ->paginate($count)
+            ->items();
     }
 
     public function getById($id)
     {
+        $this->model = $this->model->with($this->model->relations());
+
         return $this->model->findOrfail($id);
     }
 
@@ -58,9 +108,15 @@ class BaseRepository
         return $model;
     }
 
-    public function checkExist($data)
+    public function updatePartial(Model $model, $data)
     {
-        return $this->model->where($data)->select('id')->first();
+        foreach ($data as $key => $value) {
+            $model->{$key} = $value;
+        }
+
+        $model->save();
+
+        return $model->refresh();
     }
 
     public function delete(Model $model)
