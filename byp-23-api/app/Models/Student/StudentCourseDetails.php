@@ -64,11 +64,11 @@ class StudentCourseDetails extends Model
 
     public function resourceData($request)
     {
-        return [
+        return ModelUtils::filterNullValues([
             'id' => $request->id,
             'student' => new StudentResource($request->student),
             'course' => new CourseResource($request->course),
-        ];
+        ]);
     }
 
     public function controller()
@@ -97,10 +97,10 @@ class StudentCourseDetails extends Model
 
     public function relations()
     {
-        return ModelUtils::filterNullValues([
+        return [
             'student',
             'course'
-        ]);
+        ];
     }
 
     public function student()
