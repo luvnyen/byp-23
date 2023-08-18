@@ -61,7 +61,6 @@ class StudentCourseDetailsRepository extends BaseRepository
         // return $res;
 
         return [
-            'id' => $res->first()->id,
             'student' => [
                 'id' => $res->first()->student->id,
                 'nrp' => $res->first()->student->nrp,
@@ -73,6 +72,7 @@ class StudentCourseDetailsRepository extends BaseRepository
             ],
             'courses' => $res->map(function ($item) {
                 return [
+                    'student_course_details_id' => $item->id,
                     'id' => $item->course->id,
                     'code' => $item->course->code,
                     'name' => $item->course->name,
